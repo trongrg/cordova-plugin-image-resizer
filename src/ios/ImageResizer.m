@@ -53,6 +53,11 @@ static NSInteger count = 0;
 
     UIImage *tempImage = nil;
     CGSize targetSize = frameSize;
+    float hfactor = sourceImage.size.width / targetSize.width;
+    float vfactor = sourceImage.size.height / targetSize.height;
+    float factor = fmax(hfactor, vfactor);
+    targetSize.width = sourceImage.size.width / factor;
+    targetSize.height = sourceImage.size.height / factor;
     UIGraphicsBeginImageContext(targetSize);
 
     CGRect thumbnailRect = CGRectMake(0, 0, 0, 0);
